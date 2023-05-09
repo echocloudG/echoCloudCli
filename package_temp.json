@@ -4,8 +4,16 @@
   "description": "{{projectDescription}}",
   "main": "./src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config ./config/webpack.config.js",
-    "build": "webpack --config ./config/webpack.config.js --mode production"
+    "start": "cross-env NODE_ENV=development vite",
+    "build": "cross-env NODE_ENV=production vite build",
+    "preview": "cross-env  vite preview",
+    "install:husky": "husky install",
+    "lint:eslint": "eslint \"**/*.{jsx,js}\" --fix",
+    "lint:style": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "lint:pretty": "pretty-quick --staged",
+    "format": "prettier-eslint 'src/**/*.{js,jsx}' --write",
+    "deploy-gh": "GH=1 bash deploy-gh.sh"
   },
   "author": "{{author}}",
   "license": "ISC",
